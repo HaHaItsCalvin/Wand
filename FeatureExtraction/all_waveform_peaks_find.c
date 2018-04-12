@@ -211,9 +211,11 @@ int main(int argc, char **argv)
 	x = (float *) malloc(sizeof(float) * N_SAMPLES);
 	y = (float *) malloc(sizeof(float) * N_SAMPLES);
 	z = (float *) malloc(sizeof(float) * N_SAMPLES);
+//	printf ("Before while\n");
 	while ((read = getline(&line, &len, fp)) != -1) {
 		/* parse the data */
 		rv = sscanf(line, "%f,%f,%f,%f\n", &t[i], &x[i], &y[i], &z[i]);
+//		printf("reading line\n");
 		if (rv != 4) {
 			fprintf(stderr,
 					"%s %d \'%s\'. %s.\n",
@@ -401,7 +403,6 @@ int main(int argc, char **argv)
 	fclose(fp);
 
 
-	return 0;
 /*
  * 	Write Z Axis data
  *
