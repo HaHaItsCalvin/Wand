@@ -17,8 +17,11 @@
  *	3) Waveform data file for gnuplot processing containing X axis data
  *	4) Waveform peaks data file for Y axis
  *	5) Waveform data file for gnuplot processing containing Y axis data
- *	6) Peak search threshold for X axis data
- *	7) Peak search threshold for Y axis data
+ 	6) Waveform peaks data file for Z axis
+	7) Waveform data file for gnuplot processing conatining Z axis data
+ *	8) Peak search threshold for X axis data
+ *	9) Peak search threshold for Y axis data
+ *	10 Peak search threshold for Z axis data
  *
  */
 
@@ -258,7 +261,6 @@ int main(int argc, char **argv)
                 exit(EXIT_FAILURE);
         }
 
-/* Begin Z axis peaks & Troughs find*/
 	P_i_z = (float *) malloc(sizeof(float) * N_SAMPLES);
 	T_i_z = (float *) malloc(sizeof(float) * N_SAMPLES);
 	rv = find_peaks_and_troughs(	
@@ -405,6 +407,7 @@ int main(int argc, char **argv)
  *
  */
  
+	//output the peaks&troughs data file for Z axis
 	printf("Z-Axis peaks data file: \'%s\'.\n", z_ofile_pt_name);
 	fp = fopen(z_ofile_pt_name, "w");
 	if (fp == NULL) {
@@ -464,74 +467,6 @@ int main(int argc, char **argv)
 	       );
 	}
 	fclose(fp);
-
-
-	return 0;
-
- /** 	Write Z Axis data
- *
- */
- 
-	printf("Z-Axis peaks data file: \'%s\'.\n", z_ofile_pt_name);
-	fp = fopen(z_ofile_pt_name, "w");
-	if (fp == NULL) {
-		fprintf(stderr,
-				"Failed to write to file \'%s\'.\n", 
-				z_ofile_pt_name
-			       );
-		exit(EXIT_FAILURE);
-		}
-
-	fprintf(fp, "Peak-Trough-Z-%0.1f\n",pk_threshold_z);
-	for (i = 0; i < n_P_z || i < n_T_z; i++) {
-
-	/* 
-	 * Only peak data if there is peak data to write 
-	 */
-	if (i < n_P_z) {
-		idx = (int) P_i_z[i];
-		fprintf(fp, "%lf,  %lf\n",
-				t[idx],
-				z[idx]
-		       );
-		} else {
-		fprintf(fp, ",,,");
-	}
-
-	/* Only trough data if there is trough data to write */
-	if (i < n_T_z) {
-		idx = (int) T_i_z[i];
-		fprintf(fp, "%lf,  %lf \n",
-				t[idx],
-				z[idx]
-		       );
-		} else {
-		fprintf(fp, ",,\n");
-		}
-	}
-	fclose(fp);
-
-	/* open the output file to write the Z axis data */
-	printf("Z-Axis plot data file: \'%s\'.\n", z_ofile_st_name);
-	fp = fopen(z_ofile_st_name, "w");
-	if (fp == NULL) {
-			fprintf(stderr, 
-			"Failed to write to file \'%s\'.\n", 
-			z_ofile_st_name
-       			);
-	exit(EXIT_FAILURE);
-	}
-
-
-	fprintf(fp, "Z-Waveform\n");
-	for (i = 0; i < N_SAMPLES; i++) {
-	fprintf(fp, "%lf, %lf\n",
-			t[i],
-			z[i]
-	       );
-	}
-	fclose(fp);
-
 
 /*
 *FINISH DATA WRITING FOR X Y Z DATA*
