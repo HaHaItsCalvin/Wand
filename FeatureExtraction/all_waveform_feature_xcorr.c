@@ -252,7 +252,7 @@ main(int argc, char **argv)
 			);
 		exit(EXIT_FAILURE);
 	}
-	fprintf(fp, "Time 1XX 1YY 2XX 2YY 1X2Y 1Y2X \n");
+	fprintf(fp, "Time 1XX 1ZZ 2XX 2ZZ 1X2Z 1Z2X \n");
 	for (i = 0; i < 2 * vector_length; i++) {
 		fprintf(fp, "%f, %f, %f, %f, %f, %f, %f\n",
 			(float)(i - vector_length)/sample_rate,
