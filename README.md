@@ -2,20 +2,18 @@
 
 Instructions for naming directories.
 Formatting is as follows: 
-#~/Wand/MotionType/Motion_data/peaks/sorted
-#~/Wand/MotionType/Xcorr_data/peaks/sorted
+#~/Wand/motion/Motion_data/peaks/sorted
+#~/Wand/motion/Xcorr_data/peaks/sorted
 
 Patronus Directory Status:
-#All Xcorr data has to be redone.
-#Have to refind peaks for the motion data using the new XYZ Peak find functionality
+#Sort Peaks for Motion Data
+#Find peaks & sort for Xcorr
 
 Disarm Directory Status:
-#All Xcorr data has to be redone.
-#Have to refind peaks for the motion data using the new XYZ Peak find functionality
+#Sort Peaks for Motion Data
 
 Aquamente Directory Status:
-#All Xcorr data has to be redone.
-#Have to refind peaks for the motion data using the new XYZ Peak find functionality
+#Sort Peaks for Motion Data
 
 FANN Training for Disarm & Patronus:
 #Must determine suitable features for motion recognition...
