@@ -24,4 +24,4 @@ Tasks to Do:
 #Do the tasks for Patronus & Disarm directories
 
 #Steven
-#Do the tasks for Aquamente and Stun Directories
+#Do the tasks for Aquamente and Shrinking Directories

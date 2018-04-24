@@ -1,6 +1,6 @@
 #!/bin/bash
 
-gcc -o bubble_sort_norm_Edited bubble_sort_norm_Edited.c
+gcc -o correct_bubble_sort_norm correct_bubble_sort_norm.c
 
 echo "What's the motion? all lowercase ex: patronus, shrinking"
 read motion
@@ -14,7 +14,7 @@ fi
 i=1
 while [ $i -lt $(($end+1)) ]
 do
-./bubble_sort_norm_Edited ~/Wand/"$motion"/Motion_data/peaks/"$motion"_xpeaks_$i ~/Wand/"$motion"/Motion_data/peaks/sorted/"$motion"_sorted_xpeaks_$i ~/Wand/"$motion"/Motion_data/peaks/"$motion"_zpeaks_$i ~/Wand/"$motion"/Motion_data/peaks/sorted/"$motion"_sorted_zpeaks_$i
+./correct_bubble_sort_norm ~/Wand/"$motion"/Motion_data/peaks/"$motion"_xpeaks_$i.csv ~/Wand/"$motion"/Motion_data/peaks/sorted/"$motion"_sorted_xpeaks_$i.csv ~/Wand/"$motion"/Motion_data/peaks/"$motion"_zpeaks_$i.csv ~/Wand/"$motion"/Motion_data/peaks/sorted/"$motion"_sorted_zpeaks_$i.csv
 
 
 i=$(($i+1))
