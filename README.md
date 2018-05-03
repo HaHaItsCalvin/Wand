@@ -12,19 +12,29 @@ Note about BubbleSort.c:
 
 
 Patronus Directory Status:
-#Sort Peaks for Motion Data
-#Find peaks & sort for Xcorr
+#All motion data Done
+#Find XCORR Peaks
 
 Disarm Directory Status:
+<<<<<<< HEAD
 #Disarm 1 & 2 have issues with their sorted peaks... get -nan messing it up
 #Disarm 3-8 don't have the issue with -nan... peculiar tbh
+=======
+#All motion data Done
+#Find XCORR Peaks
+>>>>>>> e1147641e1e3fe99dfcfdce8ae3cf404bc594857
 
 Aquamente Directory Status:
-#Sort Peaks for Motion Data
+#All motion data Done
+#Find XCORR Peaks
+
+Shrinking Directory Status:
+#All motion data Done
+#Find XCORR Peaks
 
 FANN Training for Disarm & Patronus:
 #Must determine suitable features for motion recognition...
-
+#Determine computation for the 
 
 Tasks to Do:
 #Calvin
