@@ -18,7 +18,7 @@ with open("z_playtest.csv",'r') as inputF, open ('peakCount.txt','w') as w:
 				data=line.split(",")
 				#filter out zero amplitude cases
 				#Filter out cases where amplitude spikes occur at times <0.05sec
-				if float(data[1])==0 or float(data[1])==-0 or float(data[0])<0.05:
+				if float(data[1])==0 or float(data[1])==-0 or float(data[0])<0.1:
 					pass
 				else:
 					#print "ELSE\n"
@@ -35,10 +35,10 @@ with open("z_playtest.csv",'r') as inputF, open ('peakCount.txt','w') as w:
 	print "Amp Vector: ",amp
 	diff=(float(amp[1])-float(amp[0]))
 	print "Diff bewteen 1st peaks: ",diff
-	if lineCount > 6:
-		if diff <0:
-			print "Disarm"
-		else:
+	if diff<0:
+		print "Disarm"
+		exit()
+	if lineCount > 5:
 			print "Shrinking"
 	else:
 		print "Aquamente or Patronus"
