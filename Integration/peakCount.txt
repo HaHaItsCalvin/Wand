@@ -1,2 +1,0 @@
-Extrema Count is: 6
-Difference between 1st extrema is: 0

@@ -7,7 +7,7 @@
 int 
 main(int argc, char **argv) 
 {
-   FILE *fp, *fp_input;
+   FILE *fp
    char *name_file,*ofile_name;
    size_t len=0,len1=0;
    ssize_t read,read1;
@@ -22,7 +22,7 @@ main(int argc, char **argv)
 		);
 	exit(EXIT_FAILURE);
 	}
-	name_file = argv[1;
+	name_file = argv[1];
 	ofile_name= argv[2];
 
    fp= fopen(name_file, "r");
@@ -41,30 +41,22 @@ main(int argc, char **argv)
    while ((read = getline(&line, &len, fp)) != -1) {
      
        // read name file
-        rv= sscanf(line, "%s",file_name);
-        fp_input= fopen(file_name, "r");
-	if (fp_input == NULL){
-	        fprintf(stderr,
-		"Failed to read from file '%s'\n",
-		 file_name
-						                );
-	  exit(EXIT_FAILURE);
-	  }
 	Count=0;
 	//discard header
-        read1=getline(&line1,&len1, fp_input);
-        while((read1 = getline(&line1, &len1,fp_input))!= -1){      	 
+        read1=getline(&line1,&len1, fp);
+        while((read1 = getline(&line1, &len1,fp))!= -1){      	 
 		Count++;
 	}
-	fclose(fp_input);
+	fclose(fp);
         
-	fp_input = fopen(ofile_name, "a+");
-	   fprintf(fp_input, "%d\n", Count);
-	fclose(fp_input);
+	fp = fopen(ofile_name, "a+");
+	   fprintf(fp_input, "number of xxpeaks %d\n", Count);
+	fclose(fp);
+        printf("number of xxpeaksd %d\n",Count);
 	
    }
    
-   fclose(fp);
+   
 
    
    return(0);
