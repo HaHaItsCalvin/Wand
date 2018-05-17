@@ -208,8 +208,6 @@ int main(int argc, char **argv)
 	float amp_holder;
 //	rv1 = sscanf(line1, "%f, %f\n", &time_vector[i1], &amplitude_vector1[i1]);
 	rv1 = sscanf(line1, " %f, %f\n", &time_holder, &amp_holder);
-	printf("#######Value @ Amp_vector1[%d] is %f\n",i1,amplitude_vector1[0]);
-	printf("~~~~~~~~~~~~LINE %s",line1);
 	if (rv1 != 2) {
            /* fprintf(stderr,
                     "%s %d \'%s\'\n",
@@ -220,15 +218,11 @@ int main(int argc, char **argv)
 	   */
 	time_vector1[i1]=0;
 	amplitude_vector1[i1]=0;
-	   printf("~~~SKIP Amp Vector Value @ %d is %f\n",i1,amplitude_vector1[i1]);
-		printf("~~~~SKIP AMP VECTOR Value @ 10 is %f\n",amplitude_vector1[10]);	
 		//continue
 	}    
 	else{
-		printf("~~~~~~~HOLD & AMP %f,%f~~~~~~\n",time_holder,amp_holder);
 		time_vector1[i1]=time_holder;
 		amplitude_vector1[i1]=amp_holder;
-		printf("~~~~~~VECTOR VALUES @ %d %f,%f~~~~~~\n",i1,time_vector1[i1],amplitude_vector1[i1]);
 	}
         i1++;
     }
@@ -237,12 +231,7 @@ int main(int argc, char **argv)
     vector_length1 = N_SAMPLES1;
     
     
-   for (i1=0; i1<vector_length1; i1++)
-    	printf("Amp Vector Value before sort @ %d is %f\n",i1,amplitude_vector1[i1]);
-    
     bubble_sort(time_vector1, amplitude_vector1, vector_length1);
-   for (i1=0; i1<vector_length1; i1++)
-    	printf("Amp Vector Value after sort @ %d is %f\n",i1,amplitude_vector1[i1]);
     
 
    //define all the max & min values becaue we'll need them later for normalization 
@@ -250,10 +239,6 @@ int main(int argc, char **argv)
     max_vector(amplitude_vector, &vec_max, vector_length);
     float min1 = vec_min;
     float max1 = vec_max;
-   
-   for (i1=0; i1<vector_length1; i1++)
-    	printf("Amp Vector Value after sort & max@ %d is %f\n",i1,amplitude_vector1[i1]);
-    
     min_vector(amplitude_vector1, &vec_min1, vector_length1);
     max_vector(amplitude_vector1, &vec_max1, vector_length1);
     float min2 = vec_min1;

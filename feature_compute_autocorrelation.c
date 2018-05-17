@@ -8,7 +8,7 @@ int
 main(int argc, char **argv) 
 {
    FILE *fp, *fp_input;
-   char *name_file_M,*name_file_X,*ofile_name;
+   char *name_file,*ofile_name;
    size_t len=0,len1=0;
    ssize_t read,read1;
    int Count, rv;
@@ -20,12 +20,13 @@ main(int argc, char **argv)
    char file_name[1000];
    
 
-   if (argc!=4){
+   if (argc!=3){
    	fprintf(stderr,
 		"Error -check usage\n"
 		);
 	exit(EXIT_FAILURE);
 	}
+<<<<<<< HEAD
 	name_file_M = argv[1];    //first motion peak file, second correlation peak file
 	name_file_X = argv[2];
 	ofile_name= argv[3];
@@ -34,10 +35,16 @@ main(int argc, char **argv)
 
     // read name_file_M
    fp= fopen(name_file_M, "r");
+=======
+	name_file = argv[1;
+	ofile_name= argv[2];
+
+   fp= fopen(name_file, "r");
+>>>>>>> 02881de68f9c977dfcc220c4d4ebd2e0744b3a39
    if (fp == NULL){
    	fprintf(stderr,
 		"Failed to read from file \'%s\"/\n",
-		name_file_M
+		name_file
 		);
 	exit(EXIT_FAILURE);
    }

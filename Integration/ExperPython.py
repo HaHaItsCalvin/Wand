@@ -1,7 +1,8 @@
  #!/usr/bin/env pytho
 
 #selectfile = file(raw_input("Enter Filename: "), 'r')
-with open(raw_input("Enter Filename: "), 'r') as inputF, open ('peakCount.txt','w') as w:
+#with open(raw_input("Enter Filename: "), 'r') as inputF, open ('peakCount.txt','w') as w:
+with open("z_playtest.csv",'r') as inputF, open ('PeakCount.txt','w') as w:
 	time = []
 	amp = []
 	lineCount=0
@@ -17,7 +18,7 @@ with open(raw_input("Enter Filename: "), 'r') as inputF, open ('peakCount.txt','
 				data=line.split(",")
 				#filter out zero amplitude cases
 				#Filter out cases where amplitude spikes occur at times <0.05sec
-				if float(data[1])==0 or float(data[1])==-0 or float(data[0])<0.05:
+				if float(data[1])==0 or float(data[1])==-0 or float(data[0])<0.1:
 					pass
 				else:
 					#print "ELSE\n"
@@ -34,10 +35,16 @@ with open(raw_input("Enter Filename: "), 'r') as inputF, open ('peakCount.txt','
 	print "Amp Vector: ",amp
 	diff=(float(amp[1])-float(amp[0]))
 	print "Diff bewteen 1st peaks: ",diff
-	if lineCount > 6:
-		if diff <0:
-			print "Disarm"
-		else:
+	w.write("Extrema Count is: ")
+	w.write('%d\n'%lineCount)
+	w.write("Difference between 1st extrema is: ")
+	w.write('%f\n'%diff)
+#	w.write('Extrema Count is %d\n' &lineCount)
+#	w.write('Diff between 1st peaks: %d\n' %diff)
+	if diff<0:
+		print "Disarm"
+		exit()
+	if lineCount > 5:
 			print "Shrinking"
 	else:
 		print "Aquamente or Patronus"
