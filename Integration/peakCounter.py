@@ -2,7 +2,7 @@
 
 #selectfile = file(raw_input("Enter Filename: "), 'r')
 #with open(raw_input("Enter Filename: "), 'r') as inputF, open ('peakCount.txt','w') as w:
-with open("z_playtest.csv",'r') as inputF, open ('peakCount.txt','w') as w:
+with open("z_playtest.csv",'r') as inputF, open ('PeakCount.txt','w') as w:
 	time = []
 	amp = []
 	lineCount=0
@@ -35,6 +35,12 @@ with open("z_playtest.csv",'r') as inputF, open ('peakCount.txt','w') as w:
 	print "Amp Vector: ",amp
 	diff=(float(amp[1])-float(amp[0]))
 	print "Diff bewteen 1st peaks: ",diff
+	w.write("Extrema Count is: ")
+	w.write('%d\n'%lineCount)
+	w.write("Difference between 1st extrema is: ")
+	w.write('%f\n'%diff)
+#	w.write('Extrema Count is %d\n' &lineCount)
+#	w.write('Diff between 1st peaks: %d\n' %diff)
 	if diff<0:
 		print "Disarm"
 		exit()
