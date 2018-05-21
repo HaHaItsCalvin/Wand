@@ -13,10 +13,10 @@
  *	Usage command line arguments include:
  *
  *	1) Input data filename provided by Acquire_LowPass_Continuous.c or similar format
- *	2) Waveform peaks data file for 1X2Z
- *	3) Waveform data file for gnuplot processing containing 1X2Z axis data
+ *	2) Waveform peaks data file for 1Z2Z
+ *	3) Waveform data file for gnuplot processing containing 1Z2Z axis data
  *
- *	6) Peak search threshold for 1X2Z
+ *	4) Peak search threshold for 1Z2Z
  *
  *
  */
@@ -158,7 +158,7 @@ int main(int argc, char **argv)
 
 
 
-	        if (argc != 8) {
+	        if (argc != 5) {
 	               fprintf(stderr, 
 	                      "Error - check usage\n"
 			      );
@@ -169,11 +169,11 @@ int main(int argc, char **argv)
 		ifile_name = argv[1];
                 x_ofile_pt_name = argv[2];
                 x_ofile_st_name = argv[3];
-		y_ofile_pt_name = argv[4];
-		y_ofile_st_name = argv[5];
+		//y_ofile_pt_name = argv[4];
+		//y_ofile_st_name = argv[5];
 
-                pk_threshold_x = atof(argv[6]);
-		pk_threshold_y = atof(argv[7]);
+                pk_threshold_x = atof(argv[4]);
+		//pk_threshold_y = atof(argv[7]);
 
 
 	/* open the input file */
@@ -233,7 +233,7 @@ int main(int argc, char **argv)
 	rv = find_peaks_and_troughs(
 			x, 
 			N_SAMPLES, 
-			pk_threshold_y, 
+			pk_threshold_x, 
 			P_i_x, T_i_x, 
 			&n_P_x, &n_T_x);
 	if (rv < 0) {
