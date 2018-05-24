@@ -44,18 +44,33 @@ main(int argc, char **argv)
    //discard header
    Count=0;
    read=getline(&line,&len, fp);
-   while ((read = getline(&line, &len, fp)) != -1) {
-     			
-        Count++;
-   }	
-	fclose(fp);
-        
+
+        while ((read = getline(&line, &len, fp)) != -1) {
+        	float time_hold;
+		float amp_hold;
+                //rv = sscanf(line, "%f, %f\n", &time_vector[i], &amplitude_vector[i]);
+                rv = sscanf(line, "%f, %f\n", &time_hold, &amp_hold);
+                if (rv != 2) {
+                        fprintf(stderr,
+                                        "%s %d \'%s\'\n",
+                                        "Skip line",
+                                        i,
+                                        line
+                               );
+			continue;
+                }
+		else{
+			Count++;
+		}
+                i++;
+        }
+        fclose(fp);
        
         fp=fopen(ofile_name, "a+");     
-	fprintf(fp, "Number of xxpeaks %d\n", Count);  
+	fprintf(fp, "Number of xxpeaks is: %d\n", Count);  
 	fclose(fp);							
 	
-   printf("Number of xxpeaks %d\n",Count);	
+   printf("Number of xxpeaks is: %d\n",Count);	
 					
 
    return(0);

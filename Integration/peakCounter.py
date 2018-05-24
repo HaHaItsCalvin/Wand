@@ -2,7 +2,7 @@
 
 #selectfile = file(raw_input("Enter Filename: "), 'r')
 #with open(raw_input("Enter Filename: "), 'r') as inputF, open ('peakCount.txt','w') as w:
-with open("z_playtest.csv",'r') as inputF, open ('PeakCount.txt','w') as w:
+with open("z_playtest.csv",'r') as inputF, open ('DataFile.txt','w') as w:
 	time = []
 	amp = []
 	lineCount=0
