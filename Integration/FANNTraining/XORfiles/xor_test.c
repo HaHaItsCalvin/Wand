@@ -32,11 +32,11 @@ int main()
 
 	printf("Creating network.\n");
 
-#ifdef FIXEDFANN
-	ann = fann_create_from_file("xor_fixed.net");
-#else
+//#ifdef FIXEDFANN
+//	ann = fann_create_from_file("xor_fixed.net");
+//#else
 	ann = fann_create_from_file("xor_float.net");
-#endif
+//#endif
 
 	if(!ann)
 	{
@@ -49,16 +49,17 @@ int main()
 
 	printf("Testing network.\n");
 
-#ifdef FIXEDFANN
-	data = fann_read_train_from_file("xor_fixed.data");
-#else
+//#ifdef FIXEDFANN
+//	data = fann_read_train_from_file("xor_fixed.data");
+//#else
 	data = fann_read_train_from_file("xor.data");
-#endif
+//#endif
 
 	for(i = 0; i < fann_length_train_data(data); i++)
 	{
 		fann_reset_MSE(ann);
 		calc_out = fann_test(ann, data->input[i], data->output[i]);
+/*
 #ifdef FIXEDFANN
 		printf("XOR test (%d, %d) -> %d, should be %d, difference=%f\n",
 			   data->input[i][0], data->input[i][1], calc_out[0], data->output[i][0],
@@ -70,10 +71,11 @@ int main()
 			ret = -1;
 		}
 #else
+*/
 		printf("XOR test (%f, %f) -> %f, should be %f, difference=%f\n",
 			   data->input[i][0], data->input[i][1], calc_out[0], data->output[i][0],
 			   (float) fann_abs(calc_out[0] - data->output[i][0]));
-#endif
+//#endif
 	}
 
 	printf("Cleaning up.\n");
