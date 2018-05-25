@@ -3,7 +3,7 @@
 #selectfile = file(raw_input("Enter Filename: "), 'r')
 #with open(raw_input("Enter Filename: "), 'r') as inputF, open ('peakCount.txt','w') as w:
 with open("DataFile.txt",'r') as inputF, open ('TestFile.txt','w') as w:
-	w.write("1 3 2")
+	w.write("1 4 2")
 	w.write("\n")
 	for i, line in enumerate(inputF):
 		#Check for the faulty cases
