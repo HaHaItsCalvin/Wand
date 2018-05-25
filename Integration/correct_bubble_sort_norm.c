@@ -121,7 +121,7 @@ int main(int argc, char **argv)
         ofile_name1= argv[4];
 
         /* open the input file */
-        printf(" Input file \'%s\'.\n", ifile_name ,"\n", ifile_name1);
+        //printf(" Input file \'%s\'.\n", ifile_name ,"\n", ifile_name1);
         fp = fopen(ifile_name, "r");
         if (fp == NULL) {
                 fprintf(stderr, 
@@ -253,13 +253,14 @@ int main(int argc, char **argv)
     findMax(&max1, &max2, &absMax);
     ampNorm = absMax -absMin;
     findMax(&time_vector[vector_length-1], &time_vector1[vector_length1-1], &timeNorm);
-
+/*
     printf("timeNorm %f\n", timeNorm);
     printf("min1 %f max1 %f min2 %f max2 %f\n",min1,max1,min2,max2);
     printf("absMin %f absMax %f ampNorm %f\n", absMin, absMax, ampNorm);
-    
+*/  
    
    //print values for the first file
+/*
     printf("Time Vector Values\n");
     for (i=0; i < vector_length; i++){
         	printf("%f\n", time_vector[i]);
@@ -269,14 +270,16 @@ int main(int argc, char **argv)
     for (i=0; i < vector_length; i++){
                 printf("%f\n", amplitude_vector[i]);
         }
-
+*/
    norm_vector(time_vector, &timeNorm, vector_length);
+/*
    printf("Time Vector Values Normalized\n");
    for (i=0; i< vector_length; i++){
     	printf("%f\n", time_vector[i]);
     }
-
+*/
     norm_vector(amplitude_vector, &ampNorm, vector_length);
+/*
     printf("Amplitude Vector Values Normalized \n");
     for (i=0; i<vector_length; i++) {
     	printf("%f\n", amplitude_vector[i]);
@@ -295,20 +298,22 @@ int main(int argc, char **argv)
     for (i1=0; i1 < vector_length1; i1++){
         printf("%f\n", amplitude_vector1[i1]);
     }
-
+*/
     norm_vector(time_vector1, &timeNorm, vector_length1);
+/* 
     printf("Time Vector1 Values Normalized\n");
     for (i1=0; i1<vector_length1;i1++){
     	printf("%f\n",time_vector1[i1]);
     }
 
-
+*/
     norm_vector(amplitude_vector1, &ampNorm, vector_length1);
-    printf("Amplitude Vector1 Values Normalized \n");
+ /* 
+  printf("Amplitude Vector1 Values Normalized \n");
     for (i=0; i<vector_length1; i++) {
     	printf("%f\n", amplitude_vector1[i]);
     } 
-
+*/
     /* open the two output files to write the x axis data */
         printf("Sorted and normalized data file \'%s\'.\n", ofile_name);
         fp = fopen(ofile_name, "w");

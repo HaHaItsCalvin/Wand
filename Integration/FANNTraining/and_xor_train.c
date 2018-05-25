@@ -30,7 +30,7 @@ int main()
 	unsigned int num_layers=3;
 	unsigned int num_neurons_hidden;
 	const float	desired_error= (const float) 0;
-	const unsigned int max_epochs= 4000;
+	const unsigned int max_epochs= 10000;
 	const unsigned int epochs_between_reports=100;
 	struct fann *ann;
 	struct fann_train_data *data;
@@ -116,7 +116,7 @@ int main()
 	printf("bit fail limit %1.5f\n", bit_fail_value);
 
 	
-	fann_save(ann, "and_xor_float.net\n");
+	fann_save(ann, "and_xor_float.net");
 	free(connections);	
 	fann_destroy_train(data);
 	fann_destroy(ann);

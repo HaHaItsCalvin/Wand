@@ -43,3 +43,8 @@ cat DataFile.txt
 python DataParser.py
 #echo "Print out Test File values: "
 cat TestFile.txt
+
+echo "Begin Moion Recognition FANN execution"
+gcc -I ../src/include -L ../src/ -O3 MotionRecog_and_xor_recognition.c -o Motion_FANN_Recognition -lfann -lm
+./Motion_FANN_Recognition
+
