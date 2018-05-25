@@ -82,7 +82,7 @@ int main()
 		}
 #else
 */
-		printf("AND_XOR test (%f, %f, %f)-> (%f %f) should be (%f %f)\n difference1=%f difference2=%f\n",
+		printf("AND_XOR test (%f, %f, %f)-> (%f %f) difference1=%f difference2=%f\n",
 			   data->input[i][0], data->input[i][1], data->input[i][2],
 			   calc_out[0], calc_out[1],
 			   data->output[i][0], data->output[i][1],
@@ -92,16 +92,16 @@ int main()
 //#endif
 	}
 	if (calc_out[0]>=bin0LOW && calc_out[0]<=bin0HIGH && calc_out[1]>=bin0LOW && calc_out[1]<=bin0HIGH)
-		printf("Shrinking Motion was used");
+		printf("Shrinking Motion was used\n");
 	else if (calc_out[0] >=bin0LOW && calc_out[0] <=bin0HIGH && calc_out[1]>=bin1LOW &&calc_out[1]<=bin1HIGH)
-		printf("Disarm Motion was used");
-	else if (calc_out[0]>=bin1LOW && calc_out[0]<=bin1HIGH && calc_out[1]>=bin0LOW && calc_out[1]<=bin1HIGH)
-		printf("Aquamenete Motion was used");
+		printf("Disarm Motion was used\n");
+	else if (calc_out[0]>=bin1LOW && calc_out[0]<=bin1HIGH && calc_out[1]>=bin0LOW && calc_out[1]<=bin0HIGH)
+		printf("Aquamenete Motion was used\n");
 	else if (calc_out[0]>=bin1LOW && calc_out[0]<=bin1HIGH && calc_out[1]>=bin1LOW && calc_out[1]<=bin1HIGH)
-		printf("Patronus Motion was used");
+		printf("Patronus Motion was used\n");
 	else
-		printf("ERROR: Motion isn't easily distinguishable; all threshold were surpassed");
-	printf("Cleaning up.\n");
+		printf("ERROR: Motion isn't easily distinguishable; all threshold were surpassed\n");
+//	printf("Cleaning up.\n");
 	fann_destroy_train(data);
 	fann_destroy(ann);
 
