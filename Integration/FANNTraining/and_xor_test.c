@@ -72,8 +72,8 @@ int main()
 		}
 #else
 */
-		printf("AND_XOR test (%f, %f, %f)-> (%f %f) should be (%f %f)\n difference1=%f difference2=%f\n",
-			   data->input[i][0], data->input[i][1], data->input[i][2],
+		printf("AND_XOR test (%f, %f, %f, %f)-> (%f %f) should be (%f %f)\n difference1=%f difference2=%f\n",
+			   data->input[i][0], data->input[i][1], data->input[i][2], data->input[i][3],
 			   calc_out[0], calc_out[1],
 			   data->output[i][0], data->output[i][1],
 			   (float) fann_abs(calc_out[0] - data->output[i][0]),

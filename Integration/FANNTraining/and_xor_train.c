@@ -25,7 +25,7 @@ int main()
 {		
 	fann_type	*calc_out;
 	float	bit_fail_value;
-	const unsigned int num_input=3;
+	const unsigned int num_input=4;
 	const unsigned int num_output=2;
 	unsigned int num_layers=3;
 	unsigned int num_neurons_hidden;
@@ -87,9 +87,9 @@ int main()
 
 		for(i=0; i< fann_length_train_data(data); i++){
 		calc_out=fann_run(ann, data->input[i]);
-		printf("AND XOR test (%f, %f, %f) \t-> %f %f\t should be:%f, %f\tdifference 1="
+		printf("AND XOR test (%f, %f, %f, %f) \t-> %f %f\t should be:%f, %f\tdifference 1="
 		"%f \t difference 2= %f \t difference 3= %f \n",
-		data->input[i][0],data->input[i][1], data->input[i][2],
+		data->input[i][0],data->input[i][1], data->input[i][2],data->input[i][3],
 		calc_out[0],calc_out[1],
 		data->output[i][0], data->output[i][1],
 		fann_abs(calc_out[0] - data->output[i][0]),
