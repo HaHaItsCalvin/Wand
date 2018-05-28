@@ -28,7 +28,7 @@ int main()
 	const unsigned int num_input=4;
 	const unsigned int num_output=2;
 	unsigned int num_layers=3;
-	unsigned int num_neurons_hidden;
+	unsigned int num_neurons_hidden=3;
 	const float	desired_error= (const float) 0;
 	const unsigned int max_epochs= 50000;
 	const unsigned int epochs_between_reports=10000;
@@ -40,8 +40,8 @@ int main()
 
 	unsigned int i=0;
 	unsigned int j=0;
-	printf("Enter number of neurons in hidden layer\n");
-	scanf("%u",&num_neurons_hidden);
+//	printf("Enter number of neurons in hidden layer\n");
+//	scanf("%u",&num_neurons_hidden);
 
 	printf("Creating network. \n");
 	ann = fann_create_standard(num_layers, num_input, num_neurons_hidden, num_output);
