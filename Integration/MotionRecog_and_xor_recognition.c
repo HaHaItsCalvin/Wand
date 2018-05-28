@@ -25,7 +25,7 @@ int main()
 {
 	float diff1;
 	float diff2;
-	float thresh=0.2;
+	float thresh=0.5;
 	float bin0=0;
 	float bin1=1;
 	float bin0LOW=(bin0-thresh);
@@ -121,14 +121,14 @@ int main()
 	char * line;
 	size_t len=0;
 	getline(&line, &len, fTest);
-	printf("Line 1 is: %s\n",line);
+	printf("Line 1 is: %s",line);
 	
 	getline(&line, &len, fTest);
-	printf("Line 2 is: %s\n",line);
+	printf("Line 2 is: %s",line);
 	fclose(fTest);
 //read in the 2nd line of TestFile.txt so we get all the feature data
-	printf("%s\n",line);
-	printf("%s\n",MotionR);
+	printf("%s",line);
+	printf("%s",MotionR);
 
 	FILE * fTrain=fopen("MoreTrainingData.txt","w");
 	fprintf(fTrain,"%s",line);

@@ -423,7 +423,6 @@ int main(int argc, char *argv[]) {
 	// Following input request applies to low pass filter implementation requiring 
 	// specification of center frequency
 	//	
-					
 	if(argc != 3 ){
 		printf("Please provide cutoff frequency and number of measurement cycles\n");
 		return 0;
@@ -453,12 +452,14 @@ int main(int argc, char *argv[]) {
 
 	system("tail -n 199 sensor_data_stream.dat > motion_data.dat");
 
+	FILE * fail=fopen("Fail.txt","w");					
 	size = BLE_parse(input_file);
 	if(size == 0){
 			printf("ERROR (stream_parser): BLE Data formatted incorrectly.\n");
+			fprintf(fail,"FAIL");		
 		    	return 0;
     	}
-
+	fclose(fail);
 	printf(" Number of samples acquired =  %i \n", size);
 
 

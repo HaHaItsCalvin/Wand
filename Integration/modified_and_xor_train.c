@@ -30,8 +30,8 @@ int main()
 	unsigned int num_layers=3;
 	unsigned int num_neurons_hidden;
 	const float	desired_error= (const float) 0;
-	const unsigned int max_epochs= 100000;
-	const unsigned int epochs_between_reports=5000;
+	const unsigned int max_epochs= 50000;
+	const unsigned int epochs_between_reports=10000;
 	struct fann *ann;
 	struct fann_train_data *data;
 

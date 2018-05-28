@@ -8,7 +8,7 @@
 
 with open ('MoreTrainingData.txt','r') as inputF, open ('TrainingFile.txt','a') as a:
 	for i, line in enumerate(inputF):
-		print(line)
+#		print(line)
 		a.write(line)
 
 
