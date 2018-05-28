@@ -61,7 +61,7 @@ int main()
 		return 0;
 	}
 //~~~~~~~~~~~~~END MEMORY ALLOCATION PORTION~~~~~~~~~~~~~~~~
-	data=fann_read_train_from_file("TestFile.data");
+	data=fann_read_train_from_file("TrainingFile.txt");
 
 	fann_set_activation_steepness_hidden(ann,1);
 	fann_set_activation_steepness_output(ann,1);

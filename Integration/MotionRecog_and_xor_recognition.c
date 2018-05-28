@@ -18,7 +18,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
 #include <stdio.h>
-
+#include <string.h>
 #include "fann.h"
 
 int main()
@@ -91,19 +91,51 @@ int main()
 			   );
 //#endif
 	}
-	if (calc_out[0]>=bin0LOW && calc_out[0]<=bin0HIGH && calc_out[1]>=bin0LOW && calc_out[1]<=bin0HIGH)
+	char MotionR[20];
+	//create char[] to save Motion for adding to training file if desired
+	if (calc_out[0]>=bin0LOW && calc_out[0]<=bin0HIGH && calc_out[1]>=bin0LOW && calc_out[1]<=bin0HIGH){
 		printf("Shrinking Motion was used\n");
-	else if (calc_out[0] >=bin0LOW && calc_out[0] <=bin0HIGH && calc_out[1]>=bin1LOW &&calc_out[1]<=bin1HIGH)
+		strcpy( MotionR,"0 0");
+	}
+	else if (calc_out[0] >=bin0LOW && calc_out[0] <=bin0HIGH && calc_out[1]>=bin1LOW &&calc_out[1]<=bin1HIGH) {
 		printf("Disarm Motion was used\n");
-	else if (calc_out[0]>=bin1LOW && calc_out[0]<=bin1HIGH && calc_out[1]>=bin0LOW && calc_out[1]<=bin0HIGH)
+		strcpy(MotionR,"0 1");
+	}
+	else if (calc_out[0]>=bin1LOW && calc_out[0]<=bin1HIGH && calc_out[1]>=bin0LOW && calc_out[1]<=bin0HIGH){
 		printf("Aquamenete Motion was used\n");
-	else if (calc_out[0]>=bin1LOW && calc_out[0]<=bin1HIGH && calc_out[1]>=bin1LOW && calc_out[1]<=bin1HIGH)
+		strcpy(MotionR,"1 0");
+
+	}
+	else if (calc_out[0]>=bin1LOW && calc_out[0]<=bin1HIGH && calc_out[1]>=bin1LOW && calc_out[1]<=bin1HIGH){
 		printf("Patronus Motion was used\n");
-	else
-		printf("ERROR: Motion isn't easily distinguishable; all threshold were surpassed\n");
+		strcpy(MotionR,"1 1");
+	}
+	else{
+		printf("ERROR: Motion isn't easily distinguishable; all threshold were surpassed\n");	
+//		 MotionR=NULL;
+	}
 //	printf("Cleaning up.\n");
+
+//Code section for File reading & writing to automatically add TestFile Motion to TrainingFile.txt
+	FILE * fTest=fopen("TestFile.txt","r");
+	char * line;
+	size_t len=0;
+	getline(&line, &len, fTest);
+	printf("Line 1 is: %s\n",line);
+	
+	getline(&line, &len, fTest);
+	printf("Line 2 is: %s\n",line);
+	fclose(fTest);
+//read in the 2nd line of TestFile.txt so we get all the feature data
+	printf("%s\n",line);
+	printf("%s\n",MotionR);
+
+	FILE * fTrain=fopen("MoreTrainingData.txt","w");
+	fprintf(fTrain,"%s",line);
+	fprintf(fTrain,"%s\n",MotionR);
+	fclose(fTrain);
+
 	fann_destroy_train(data);
 	fann_destroy(ann);
-
 	return ret;
 }
