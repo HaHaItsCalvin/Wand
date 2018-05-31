@@ -6,7 +6,6 @@
 #Needed to know when to start the acquisition process
 #
 
-
 pkill gatttool
 gcc -o Acquire_LowPass_Continuous Acquire_LowPass_Continuous.c -lm -lc -lliquid
 #echo "Begin motion data input"
@@ -52,18 +51,25 @@ gcc -I ../src/include -L ../src/ -O3 MotionRecog_and_xor_recognition.c -o Motion
 #cat TrainingFile.txt
 ./Motion_FANN_Recognition
 
+
 while true; do
 	read -p "Was the motion correctly recognized?" yn
 	case $yn in
-		[Yy]* ) echo "Old Training File:"
+		[Yy]* ) #echo "Old Training File:"
 			#cat TrainingFile.txt;
-			python Add2TrainingData.py;
-			echo "New Training File:"
-			cat TrainingFile.txt;
+			#python Add2TrainingData.py;
+			#echo "New Training File:"
+			#cat TrainingFile.txt;
 			#echo "Doing things";
-			gcc -I ../src/include -L ../src/ -O3 modified_and_xor_train.c -o modified_and_xor_train -lfann -lm;
-			./modified_and_xor_train;
-			break;;
+			cat MoreTrainingData.txt >> Add2Train.txt	
+			i= wc -l Add2Train.txt
+			if [ $i == 10 ]
+			then
+				python Add2TrainingData.py;
+				echo "New Training File:"
+				cat TrainingFile.txt;
+				rm Add2Train.txt
+			fi
 		[Nn]* ) exit;;
 		* ) echo "Please answer yes or no.";;
 	esac

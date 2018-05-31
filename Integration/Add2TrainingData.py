@@ -6,7 +6,7 @@
 #	for i, line in enumerate(inputF):
 #		a.write(line)
 
-with open ('MoreTrainingData.txt','r') as inputF, open ('TrainingFile.txt','a') as a:
+with open ('Add2Train.txt','r') as inputF, open ('TrainingFile.txt','a') as a:
 	for i, line in enumerate(inputF):
 #		print(line)
 		a.write(line)
@@ -36,7 +36,6 @@ with open ('NewTrainingFile.txt','r') as r, open ('TrainingFile.txt','w') as w:
 		data=line
 		data.rstrip('\n')
 		w.write(data)
-print("NewTraininFile named")
 #with open ('TrainingFile.txt','w') as w:
 #			w.write("%d"%data[0])
 #			w.write(" ")

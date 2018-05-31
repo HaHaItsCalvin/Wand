@@ -1,4 +1,4 @@
-Z Extrema Count is: 3
-Difference between 1st Z extrema is: -0.581184
-Difference between 1st X extrema is: -0.420569
+Z Extrema Count is: 4
+Difference between 1st Z extrema is: 0.463899
+Difference between 1st X extrema is: -0.556748
 Number of xxpeaks is: 0
