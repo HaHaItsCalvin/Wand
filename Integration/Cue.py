@@ -16,7 +16,6 @@ with open("Cue.txt",'w') as w:
 	elif cue==4:
 		motion="disarm"
 		w.write("disarm")
-print("Do Motion: ",motion)
-print("\n")
+print("Do Motion: "+ motion)
 print("Begin in 3 seconds!")
 

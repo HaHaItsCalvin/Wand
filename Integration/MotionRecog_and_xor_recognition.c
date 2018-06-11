@@ -89,6 +89,7 @@ int main()
 			  diff1= (float) fann_abs(calc_out[0] - data->output[i][0]),
 			  diff2= (float) fann_abs(calc_out[1] - data->output[i][1])
 			   );
+
 //#endif
 	}
 	char MotionR[20];
