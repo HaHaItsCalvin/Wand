@@ -5,6 +5,7 @@
 #Audio Cue goes here!!!
 #Needed to know when to start the acquisition process
 #
+python Cue.py
 
 pkill gatttool
 gcc -o Acquire_LowPass_Continuous Acquire_LowPass_Continuous.c -lm -lc -lliquid
@@ -51,26 +52,42 @@ gcc -I ../src/include -L ../src/ -O3 MotionRecog_and_xor_recognition.c -o Motion
 #cat TrainingFile.txt
 ./Motion_FANN_Recognition
 
+python FinalCheck.py
 
-while true; do
-	read -p "Was the motion correctly recognized?" yn
-	case $yn in
-		[Yy]* ) #echo "Old Training File:"
-			#cat TrainingFile.txt;
-			#python Add2TrainingData.py;
-			#echo "New Training File:"
-			#cat TrainingFile.txt;
-			#echo "Doing things";
-			cat MoreTrainingData.txt >> Add2Train.txt	
-			i= wc -l Add2Train.txt
-			if [ $i == 10 ]
-			then
-				python Add2TrainingData.py;
-				echo "New Training File:"
-				cat TrainingFile.txt;
-				rm Add2Train.txt
-			fi
-		[Nn]* ) exit;;
-		* ) echo "Please answer yes or no.";;
-	esac
-done
+if [ -f "FinalCheck.txt" ]
+then
+	echo "User Input Matched Motion Cue!!"
+	#python Add2TrainingData.py
+	if [ -f "Retrain.txt" ]
+	then
+		echo "Retraining";
+		python Add2TrainingData.py
+		gcc -I ../src/include -L ../src/ -O3 modified_and_xor_train.c -o modified_and_xor_train -lfann -lm;
+		./modified_and_xor_train;
+		rm Retrain.txt;
+		rm MoreTrainingData.txt;
+	fi
+	rm FinalCheck.txt;
+fi
+#while true; do
+#	read -p "Was the motion correctly recognized?" yn
+#	case $yn in
+#		[Yy]* ) #echo "Old Training File:"
+#			#cat TrainingFile.txt;
+#			#python Add2TrainingData.py;
+#			#echo "New Training File:"
+#			#cat TrainingFile.txt;
+#			#echo "Doing things";
+#			cat MoreTrainingData.txt >> Add2Train.txt	
+#			i= wc -l Add2Train.txt
+#			if [ $i == 10 ]
+#			then
+#				python Add2TrainingData.py;
+#				echo "New Training File:"
+#				cat TrainingFile.txt;
+#				rm Add2Train.txt
+#			fi
+#		[Nn]* ) exit;;
+#		* ) echo "Please answer yes or no.";;
+#	esac
+#done
