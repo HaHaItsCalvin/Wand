@@ -137,20 +137,20 @@ int main()
 	char * line;
 	size_t len=0;
 	getline(&line, &len, fTest);
-	//printf("Line 1 is: %s",line);
+	printf("Line 1 is: %s",line);
 	
 	getline(&line, &len, fTest);
-	//printf("Line 2 is: %s",line);
+	printf("Line 2 is: %s",line);
 	fclose(fTest);
 //read in the 2nd line of TestFile.txt so we get all the feature data
 	//printf("%s",line);
 	//printf("%s",MotionR);
-//	if (success==1){
-//		FILE * fTrain=fopen("MoreTrainingData.txt","a+");
-//		fprintf(fTrain,"%s",line);
-//		fprintf(fTrain,"%s\n",MotionR);
-//		fclose(fTrain);
-//	}
+	if (success==1){
+		FILE * fTrain=fopen("SuccessData.txt","w");
+		fprintf(fTrain,"%s",line);
+		fprintf(fTrain,"%s\n",MotionR);
+		fclose(fTrain);
+	}
 	fann_destroy_train(data);
 	fann_destroy(ann);
 	return ret;
