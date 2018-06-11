@@ -92,25 +92,29 @@ int main()
 //#endif
 	}
 	char MotionR[20];
-	FILE *Check=fopen("CueCheck.txt","w");
+	FILE *CueCheck=fopen("CueCheck.txt","w+");
+	int success=0;
 	//create char[] to save Motion for adding to training file if desired
 	if (calc_out[0]>=bin0LOW && calc_out[0]<=bin0HIGH && calc_out[1]>=bin0LOW && calc_out[1]<=bin0HIGH){
 		printf("Shrinking Motion was used\n");
 		strcpy( MotionR,"0 0");
 		fprintf(CueCheck,"shrinking");
 		fclose(CueCheck);
+		success=1;
 	}
 	else if (calc_out[0] >=bin0LOW && calc_out[0] <=bin0HIGH && calc_out[1]>=bin1LOW &&calc_out[1]<=bin1HIGH) {
 		printf("Disarm Motion was used\n");
 		strcpy(MotionR,"0 1");
 		fprintf(CueCheck,"disarm");
 		fclose(CueCheck);
+		success=1;
 		}
 	else if (calc_out[0]>=bin1LOW && calc_out[0]<=bin1HIGH && calc_out[1]>=bin0LOW && calc_out[1]<=bin0HIGH){
 		printf("Aquamenete Motion was used\n");
 		strcpy(MotionR,"1 0");
 		fprintf(CueCheck,"aquamente");
 		fclose(CueCheck);
+		success=1;
 
 	}
 	else if (calc_out[0]>=bin1LOW && calc_out[0]<=bin1HIGH && calc_out[1]>=bin1LOW && calc_out[1]<=bin1HIGH){
@@ -118,11 +122,13 @@ int main()
 		strcpy(MotionR,"1 1");
 		fprintf(CueCheck,"patronus");
 		fclose(CueCheck);
+		success=1;
 	}
 	else{
 		printf("ERROR: Motion isn't easily distinguishable; all threshold were surpassed\n");	
 //		 MotionR=NULL;
 		fclose(CueCheck);
+		success=0;
 	}
 //	printf("Cleaning up.\n");
 
@@ -139,12 +145,12 @@ int main()
 //read in the 2nd line of TestFile.txt so we get all the feature data
 	//printf("%s",line);
 	//printf("%s",MotionR);
-
-	FILE * fTrain=fopen("MoreTrainingData.txt","a+");
-	fprintf(fTrain,"%s",line);
-	fprintf(fTrain,"%s\n",MotionR);
-	fclose(fTrain);
-
+//	if (success==1){
+//		FILE * fTrain=fopen("MoreTrainingData.txt","a+");
+//		fprintf(fTrain,"%s",line);
+//		fprintf(fTrain,"%s\n",MotionR);
+//		fclose(fTrain);
+//	}
 	fann_destroy_train(data);
 	fann_destroy(ann);
 	return ret;
