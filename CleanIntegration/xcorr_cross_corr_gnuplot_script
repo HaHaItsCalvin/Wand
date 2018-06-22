@@ -1,9 +1,0 @@
-
-set term png enhanced size 1280,1024
-set key autotitle columnhead
-set pointsize 4 
-set xlabel "Sample Delay (seconds)"
-set ylabel "Correlation Value"
-set output 'xcorr_cross_corr_file_1_x_axis-file_2_z_axis_plot.png'
-plot 'xcorr_output.csv' using 1:6 with line  
-

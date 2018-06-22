@@ -138,14 +138,9 @@ int main()
 	char * line;
 	size_t len=0;
 	getline(&line, &len, fTest);
-	printf("Line 1 is: %s",line);
-	
 	getline(&line, &len, fTest);
-	printf("Line 2 is: %s",line);
 	fclose(fTest);
 //read in the 2nd line of TestFile.txt so we get all the feature data
-	//printf("%s",line);
-	//printf("%s",MotionR);
 	if (success==1){
 		FILE * fTrain=fopen("SuccessData.txt","w");
 		fprintf(fTrain,"%s",line);

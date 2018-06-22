@@ -1,3 +1,0 @@
-Extrema Count is: 9
-Difference between 1st extrema is: -0.637808
-Number of xxpeaks 2

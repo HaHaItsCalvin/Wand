@@ -1,11 +1,5 @@
  #!/usr/bin/env pytho
 
-#selectfile = file(raw_input("Enter Filename: "), 'r')
-#with open(raw_input("Enter Filename: "), 'r') as inputF, open ('peakCount.txt','w') as w:
-#with open("AddToTraining.txt",'r') as inputF, open ('TrainingFile.txt','a') as a:
-#	for i, line in enumerate(inputF):
-#		a.write(line)
-
 with open ('MoreTrainingData.txt','r') as inputF, open ('TrainingFile.txt','a') as a:
 	for i, line in enumerate(inputF):
 #		print(line)
