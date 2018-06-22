@@ -1,44 +1,18 @@
 # 180DWandProject
 
-Instructions for naming directories.
-Formatting is as follows: 
-#~/Wand/motion/Motion_data/peaks/sorted
-#~/Wand/motion/Xcorr_data/peaks/sorted
+To install this system from GitHub, run:
+git clone https://github.com/StealthxFox/Wand.git
 
-Note about BubbleSort.c:
-#use correct bubble sort.c in the main Wand directory for all sorting;
-#any other version of bubble sort.c won't be correct; it's not set up
-#to normalize the waveforms in the same scaling method
+To run the system, do in terminal session where the git repo was cloned:
+1) cd Integration
+2) sh Integration.sh
+#Step 2 will cause the system to execute if installation was done properly
 
+All filles necessary to run this system are contained in the Integration Directory.
+Once in the Integration directory, run "sh integration.sh"
 
-Patronus Directory Status:
-#All motion data Done
-#Find XCORR Peaks
+Data_Graphs Directory 
+Holds all the motion, cross correlation, and auto correlation graphs derived during experimental tests to try and determine the ideal features for classification of each of the four motions.
 
-Disarm Directory Status:
-<<<<<<< HEAD
-#Disarm 1 & 2 have issues with their sorted peaks... get -nan messing it up
-#Disarm 3-8 don't have the issue with -nan... peculiar tbh
-=======
-#All motion data Done
-#Find XCORR Peaks
->>>>>>> e1147641e1e3fe99dfcfdce8ae3cf404bc594857
-
-Aquamente Directory Status:
-#All motion data Done
-#Find XCORR Peaks
-
-Shrinking Directory Status:
-#All motion data Done
-#Find XCORR Peaks
-
-FANN Training for Disarm & Patronus:
-#Must determine suitable features for motion recognition...
-#Determine computation for the 
-
-Tasks to Do:
-#Calvin
-#Do the tasks for Patronus & Disarm directories
-
-#Steven
-#Do the tasks for Aquamente and Shrinking Directories
+aquamente, disarm, patronus, and shrinking Directories
+Holds all the .csv files and data files for the motion data and correlation data of each motion in each of their respective folders.
