@@ -3,6 +3,9 @@
 To install this system from GitHub, run:
 git clone https://github.com/StealthxFox/Wand.git
 
+Additional resources can be found at the following Google Drive Folder:
+https://drive.google.com/drive/u/0/folders/1cEDx3Gg0b0gIhOtK-gqbA8VQUvaqWnzp
+
 To run the system, do in terminal session where the git repo was cloned:
 1) cd Integration
 2) sh Integration.sh
